@@ -12,7 +12,5 @@ RUN apt-get update && apt-get install -y wget unzip && \
    remote google-chrome-stable_current_amd64.deb && \
    apt-get clean
 
-# first version
-CMD [ "python","main.py"]
 
-# CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD [ "python","main.py"]
