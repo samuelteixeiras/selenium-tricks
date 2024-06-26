@@ -1,12 +1,11 @@
 # Selenium Tricks
 
-- Como Testar na maquina local
+- How to test in the local
 ```bash
 python main.py 
 ```
 
-- Como fazer o build 
-com docker
+- How to do the docker build
 ```bash
 docker build -t selenium-scrap .
 ```
