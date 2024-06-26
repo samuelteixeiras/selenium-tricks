@@ -1,0 +1,14 @@
+services:
+  web:
+    image: selenium_bg
+    build: .
+    volumes:
+      - ./files:/python-docker/files
+    ports:
+      - "8000:5000"
+  selenium:
+    image: selenium/standalone-firefox:latest
+    ports:
+      - "4444:4444"
+      - "7900:7900"
+

@@ -1,2 +1,5 @@
 selenium==4.9.1
 webdriver_manager==4.0.0
+Flask==2.0.3
+Werkzeug==2.0.3
+flask_executor==0.9.4
