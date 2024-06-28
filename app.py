@@ -21,7 +21,7 @@ def execute_and_capture(fileName):
     with contextlib.redirect_stdout(output):
         exec(code)
     
-    return {'status': output.getvalue()}
+    return {'output': output.getvalue()}
 
 @app.route('/tasks')
 def tasks():
@@ -57,7 +57,7 @@ def task_status(future_id):
     return jsonify(response)
 
 @app.route('/scrap-async')
-def selenium():
+def seleniumAsync():
     future_id = str(uuid.uuid4())
     future = executor.submit(execute_and_capture,'scrappy2.py')
     futures[future_id] = future
@@ -65,7 +65,7 @@ def selenium():
     return jsonify({'status': 'Task started!','future_id': future_id }), 202
 
 @app.route('/scrap-sync')
-def selenium():
+def seleniumSync():
     callUrl()
     time.sleep(5)
     return 'done'
