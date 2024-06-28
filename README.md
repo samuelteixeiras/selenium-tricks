@@ -1,21 +1,26 @@
 # Selenium Tricks
 
 ### How to build 
+```bash
 docker compose up
-
+```
 ### Rebuild removing cache
+```bash
 docker-compose build --no-cache && docker-compose up
+```
+```bash
 docker-compose build && docker-compose up
-
+```
 
 ### Flask Server: 
-Host port 8000 and Docker port 5000
+Host port `8000` and Docker port `5000`
 
-Try:
-http://localhost:8000/
+Links to call the service:
+- [http://localhost:8000/](http://localhost:8000/)
 
-http://localhost:8000/scrap-sync
-http://localhost:8000/scrap-async
+- [Scrap sync](http://localhost:8000/scrap-sync)
+
+- [Scrap async](http://localhost:8000/scrap-async)
 
 
 
