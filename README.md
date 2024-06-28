@@ -9,7 +9,7 @@ python main.py
 ```bash
 docker build -t selenium-scrap .
 ```
-
+- Run selenium with docker
 ```bash
 docker run  selenium-scrap 
 ```
