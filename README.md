@@ -6,14 +6,6 @@ https://www.youtube.com/watch?v=q84prGKo3vI&
 
 - How to test in the local
 ```bash
-python main.py 
+python test.py 
 ```
 
-- How to do the docker build
-```bash
-docker build -t selenium-scrap .
-```
-- Run selenium with docker
-```bash
-docker run  selenium-scrap 
-```

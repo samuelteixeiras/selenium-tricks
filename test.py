@@ -1,31 +1,32 @@
 from RecaptchaSolver import RecaptchaSolver
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options  
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import time
-
+import os
 
 
 # Initialize the WebDriver options
-# options = webdriver.ChromeOptions()
 chrome_options = Options()
-
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument('--headless')
-
 chrome_options.add_argument("--log-level=3")
 chrome_options.add_argument('--no-proxy-server')
 chrome_options.add_argument("--incognito")
 chrome_options.add_experimental_option("excludeSwitches", ["enable-automation", "enable-logging"])
 chrome_options.add_experimental_option('useAutomationExtension', False)
-chrome_options.binary_location = '/usr/bin/chromium' 
 
-driver = webdriver.Chrome(options=chrome_options)
+
+driver_path = ChromeDriverManager().install()
+if driver_path:
+    driver_name = driver_path.split('/')[-1]
+    if driver_name!="chromedriver":
+        driver_path = "/".join(driver_path.split('/')[:-1]+["chromedriver"])
+        os.chmod(driver_path, 0o755)
+driver = webdriver.Chrome(service=Service(driver_path),options=chrome_options)
+
+
 driver.get("https://www.google.com/recaptcha/api2/demo")
 recaptchaSolver = RecaptchaSolver(driver)
 
