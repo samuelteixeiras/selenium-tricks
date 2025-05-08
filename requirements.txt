@@ -1,4 +1,26 @@
-selenium==4.11.2
-pydub
-SpeechRecognition
-aiohttp
+Video about it:
+https://www.youtube.com/watch?v=q84prGKo3vI&
+
+
+python3 -m venv .
+source ./bin/activate
+pip3 install -r requirements.txt
+
+# Selenium Tricks
+
+- How to test recaptcha in the local
+```bash
+python test.py 
+```
+
+- How to do the docker build
+```bash
+docker build -t selenium-recaptcha .
+```
+- Run selenium with docker
+```bash
+docker run  selenium-recaptcha 
+```
+
+From issues: 
+Use the -accept-lang=en-US parameter to initiate a browser.
