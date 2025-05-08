@@ -1,15 +1,23 @@
-FROM python:3.10
+FROM --platform=linux/amd64 python:3.10
 
 WORKDIR /python-docker
 
-COPY . /python-docker
+# Copy only requirements.txt first to leverage caching
+COPY requirements.txt /python-docker/
 RUN pip3 install --trusted-host pypi.python.org -r requirements.txt
 
-RUN apt-get update && apt-get install -y wget unzip && \
-   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-   apt install -y ./google-chrome-stable_current_amd64.deb && \
-   rm google-chrome-stable_current_amd64.deb && \
-   apt-get clean
+RUN apt-get update && apt-get install -y wget unzip ffmpeg
+
+RUN apt-get install -y chromium chromium-driver
 
 
-CMD [ "python","main.py"]
+# # Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    DISPLAY=:99 \
+    CHROME_BIN=/usr/bin/chromium
+
+# Copy application code last (this layer changes frequently)
+COPY . /python-docker    
+
+CMD [ "python","test.py"]
+
