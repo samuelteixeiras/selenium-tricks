@@ -1,6 +1,11 @@
 Video about it:
 https://www.youtube.com/watch?v=q84prGKo3vI&
 
+# List remote branchs
+git branch -a
+
+# to download other branches
+git checkout -b <branch-name> origin/<branch-name>
 
 # Selenium Tricks
 
