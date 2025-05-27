@@ -10,3 +10,4 @@ https://www.youtube.com/watch?v=DJXzo3hKM38
 python test.py 
 ```
 
+Original repo: https://github.com/sarperavci/GoogleRecaptchaBypass
